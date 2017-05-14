@@ -1,0 +1,18 @@
+/* Empty. Add your own CSS if you like */
+img {
+    height: 50%;
+    width: 50%;
+}
+ body{
+    font-family: verdana;
+    font-size: 20px;
+    text-align: right;
+    direction: rtl;
+    word-wrap: break-word;
+ }
+ p{
+     width:80%;
+ }
+ #item-avatar {
+     text-align: right;
+ }
