@@ -4,15 +4,30 @@ img {
     width: 50%;
 }
  body{
-    font-family: verdana;
-    font-size: 20px;
+    font-family: arial;
     text-align: right;
     direction: rtl;
     word-wrap: break-word;
  }
- p{
-     width:80%;
- }
- #item-avatar {
-     text-align: right;
- }
+
+.old-price {
+    font-size: 13px;
+    color: #999;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+
+.deal-box-text-title {
+    font-size: 17px;
+    color: black;
+    font-weight: 700;
+    margin: 16px;
+    margin-right: 0px;
+}
+
+.deal-box-text {
+    font-size: 14px;
+}
+.distance{
+    color:#0c60ee;
+}
