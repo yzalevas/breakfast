@@ -17,6 +17,13 @@ img {
     text-decoration: line-through;
 }
 
+.brand {
+    margin-top: 10px;
+}
+.price {
+    margin-top: 10px;
+}
+
 .deal-box-text-title {
     font-size: 17px;
     color: black;
