@@ -10,6 +10,9 @@ img {
     word-wrap: break-word;
  }
 
+.background{
+    background-color: #f5f9e5
+}
 .old-price {
     font-size: 13px;
     color: #999;
@@ -22,6 +25,9 @@ img {
 }
 .price {
     margin-top: 10px;
+    margin-bottom: 5px;
+    font-size:20px;
+    font-weight: 700;
 }
 
 .deal-box-text-title {
@@ -36,5 +42,18 @@ img {
     font-size: 14px;
 }
 .distance{
-    color:#0c60ee;
+    margin-top: 12px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #53a318;
+    padding-right: 18px;
+    background: url(../img/icon-location.png);
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 10px 14px;
 }
+.purchase-button{
+ width: 100%;
+ margin-top: 10px;
+}
+

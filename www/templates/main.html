@@ -2,13 +2,9 @@
   <ion-header-bar align-title="middle" class="bar-positive">
     <h1 class="title">ארוחות בוקר</h1>
   </ion-header-bar>
-      <ion-content>
-          <div  ng-repeat="product in products" href="#" ng-click="openWebBrowser(product.product_url);" class="card">
+      <ion-content class="background">
+          <div  ng-repeat="product in products" href="#" class="card">
              <div class="item item-body">
-                <div class="row">
-                  <div class="col col-80"></div>
-                  <div class="col distance">{{product.distance | number:2}} ק"מ</div>
-                </div>      
                 <div class="row">
                   <img class="full-image" ng-src="{{getImage(product.image)}}">    
                 </div>
@@ -23,6 +19,12 @@
                     <div class="row old-price">{{product.old_price}} ₪</div>
                     <div class="row"></div>
                   </div>
+                </div>
+                <div class="row distance">
+                  {{product.location_text}} ({{product.distance | number:2}} ק"מ)
+                </div>
+                <div class="row">
+                  <button class="button button-positive purchase-button" ng-click="openWebBrowser(product.product_url);">לרכישה</button>
                 </div>
           </div>
     </ion-content>
