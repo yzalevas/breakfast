@@ -1,4 +1,13 @@
 {
   "name": "ארוחות בוקר",
-  "app_id": "0f66b423"
+  "app_id": "0f66b423",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ]
 }

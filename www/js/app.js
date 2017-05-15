@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('breakfast', ['ionic', 'breakfast.controllers'])
+angular.module('breakfast', ['ionic', 'breakfast.controllers','jett.ionic.filter.bar'])
 
 
 .run(function($ionicPlatform) {
@@ -23,7 +23,7 @@ angular.module('breakfast', ['ionic', 'breakfast.controllers'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
   $stateProvider
 
     .state('main', {
@@ -34,6 +34,8 @@ angular.module('breakfast', ['ionic', 'breakfast.controllers'])
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/');
+  
+  $ionicConfigProvider.navBar.alignTitle('center');
 })
 .constant('GROUPON', {
   // Groupon server
