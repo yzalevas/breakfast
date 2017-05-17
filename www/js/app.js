@@ -23,19 +23,29 @@ angular.module('breakfast', ['ionic', 'breakfast.controllers','jett.ionic.filter
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider,$ionicFilterBarConfigProvider) {
   $stateProvider
 
     .state('main', {
     url: '/',
     templateUrl: 'templates/main.html',
     controller: 'MainCtrl'
-  })
+    })
+  
+    .state('purchase',{
+       url: '/purchase',
+       templateUrl:'templates/purchase.html',
+       controller:'PurchaseCtrl',
+       params: {
+          productUrl: ''
+        }
+    });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/');
   
   $ionicConfigProvider.navBar.alignTitle('center');
+  $ionicFilterBarConfigProvider.placeholder('הזן מיקום או שם בית עסק');
 })
 .constant('GROUPON', {
   // Groupon server
