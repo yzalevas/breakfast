@@ -1,6 +1,6 @@
 angular.module('breakfast.controllers', ['breakfast.services','ionic', 'jett.ionic.filter.bar','ngCordova'])
 
-.controller('MainCtrl', function($scope, groupon, $ionicFilterBar,$state,$cordovaSplashscreen) { 
+.controller('MainCtrl', function($scope,app, groupon, $ionicFilterBar,$state,$cordovaSplashscreen) { 
     
     $scope.products =[];
     
@@ -31,8 +31,12 @@ angular.module('breakfast.controllers', ['breakfast.services','ionic', 'jett.ion
     $scope.getImage = function(imgSrc){
         return groupon.baseURL + imgSrc;
     };
+    
+    $scope.rateUs = function() {
+        window.open(app.rateUrl, '_system', 'location=yes');
+    };
+    
     $scope.openWebBrowser = function(targetURL){
-      //window.open(targetURL, '_system', 'location=yes');
         $state.go('purchase',{ productUrl:targetURL});
   };
 })

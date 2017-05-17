@@ -26,10 +26,20 @@ angular.module('breakfast', ['ionic', 'breakfast.controllers','jett.ionic.filter
 .config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider,$ionicFilterBarConfigProvider) {
   $stateProvider
 
-    .state('main', {
-    url: '/',
-    templateUrl: 'templates/main.html',
+  .state('app', {
+    url: '/app',
+    abstract: true,
+    templateUrl: 'templates/menu.html',
     controller: 'MainCtrl'
+  })
+
+    .state('app.main', {
+      url: '/main',
+       views: {
+        'menuContent': {
+          templateUrl: 'templates/main.html',
+        }
+       }
     })
   
     .state('purchase',{
@@ -42,9 +52,9 @@ angular.module('breakfast', ['ionic', 'breakfast.controllers','jett.ionic.filter
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/app/main');
   
-  $ionicConfigProvider.navBar.alignTitle('center');
+//  $ionicConfigProvider.navBar.alignTitle('center');
   $ionicFilterBarConfigProvider.placeholder('הזן מיקום או שם בית עסק');
 })
 .constant('GROUPON', {
@@ -54,4 +64,7 @@ angular.module('breakfast', ['ionic', 'breakfast.controllers','jett.ionic.filter
   password: '12345678',
   breakfastCategory:206,
   baseURL: 'https://www.grouponisrael.co.il'
+})
+.constant('app',{
+  rateUrl:'https://play.google.com/store/apps/details?id=com.ionicframework.myapp640224'
 });

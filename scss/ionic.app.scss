@@ -31,13 +31,22 @@ img {
 }
  body{
     font-family: arial;
-    text-align: right;
-    direction: rtl;
     word-wrap: break-word;
  }
 
+.breakfast-menu-item{
+    background-color: rgba(56, 177, 245, 0.66);
+    text-align: right;
+    direction: rtl;
+    color:white;
+    font-weight:700;
+}
+
+
 .background{
     background-image: url(../img/wood.jpg);
+    text-align: right;
+    direction: rtl;
 }
 .old-price {
     font-size: 13px;
