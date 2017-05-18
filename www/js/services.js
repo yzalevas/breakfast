@@ -1,5 +1,5 @@
 angular.module('breakfast.services', [])
-.factory('geolocation', ['$q',function($q) {
+.factory('geolocation', ['$q',function($q,$ionicPopup) {
     
     var o = {
       currentLocation :{}  
@@ -15,6 +15,10 @@ angular.module('breakfast.services', [])
           q.resolve(o.currentLocation);
         }, function(error) {
           console.log('Got error :' +error);
+           $ionicPopup.alert({
+                title: 'Error!',
+                template: 'צריך להדליק את שירותי המיקום על מנת להשתמש באפליקציה!'
+              });
           q.reject('Failed to get coordinates of surrent position');
         });
         return q.promise;
@@ -35,7 +39,7 @@ angular.module('breakfast.services', [])
     return o;
   }
 ])
-.factory('groupon',function($http,GROUPON,geolocation){
+.factory('groupon',function($http,GROUPON,geolocation,$ionicPopup){
     var o = {
         token: '',
         products :[],
@@ -55,6 +59,10 @@ angular.module('breakfast.services', [])
           // merge data into the queue
           o.token = response.data.token;
         }).error(function(data, status) {
+            $ionicPopup.alert({
+                title: 'Error!',
+                template: 'שרת ההצעות אינו זמין'
+              });
             console.error('Repos error', status, data);
         });
       };
@@ -86,6 +94,12 @@ angular.module('breakfast.services', [])
                      return a.distance - b.distance;
                   });
               });
+        }).error(function(data, status) {
+            $ionicPopup.alert({
+                title: 'Error!',
+                template: 'שרת ההצעות אינו זמין'
+              });
+            console.error('Repos error', status, data);
         });
       };
 

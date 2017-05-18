@@ -7,19 +7,34 @@
 angular.module('breakfast', ['ionic', 'breakfast.controllers','jett.ionic.filter.bar'])
 
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$rootScope,$state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
-
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    
+    /*if (typeof window.ga !== 'undefined'){
+      window.ga.startTrackerWithId("UA-99370608-1");
+      window.ga.trackView('app');
+      window.alert('Analytics 1 was added');
+    }
+    else {
+      window.alert('Google Analytics plugin could not be loaded.');
+    }*/
+    
+    $rootScope.$on('$stateChangeSuccess', function () {
+        if(typeof analytics !== 'undefined') {
+          analytics.startTrackerWithId("UA-99370608-1");
+          analytics.trackView($state.current.name);
+        } 
+      });
   });
 })
 
@@ -47,7 +62,7 @@ angular.module('breakfast', ['ionic', 'breakfast.controllers','jett.ionic.filter
        templateUrl:'templates/purchase.html',
        controller:'PurchaseCtrl',
        params: {
-          productUrl: ''
+          productId: 0
         }
     });
 

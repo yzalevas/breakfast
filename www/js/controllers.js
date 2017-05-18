@@ -36,15 +36,36 @@ angular.module('breakfast.controllers', ['breakfast.services','ionic', 'jett.ion
         window.open(app.rateUrl, '_system', 'location=yes');
     };
     
-    $scope.openWebBrowser = function(targetURL){
-        $state.go('purchase',{ productUrl:targetURL});
+    $scope.purchaseProduct = function(productId){
+        $state.go('purchase',{ productId: productId});
   };
 })
 
-.controller('PurchaseCtrl',function($scope,$stateParams,$ionicHistory,$sce) {
-   $scope.productUrl =  $sce.trustAsResourceUrl( $stateParams.productUrl); 
+.controller('PurchaseCtrl',function($scope,$stateParams,$ionicHistory,$sce,$cordovaSocialSharing,groupon) {
+   
+   $scope.purchaseProduct = {};
+   $scope.productUrl  = '';
+   
+    $scope.$on('$ionicView.enter', function(){
+        $scope.purchaseProduct = groupon.products[$stateParams.productId];
+        $scope.productUrl =  $sce.trustAsResourceUrl( $scope.purchaseProduct.product_url); 
+  });
+   
+   $scope.viewInit = function(){
+       
+   };
+   
+    $scope.getImage = function(imgSrc){
+        return groupon.baseURL + imgSrc;
+    };
    
     $scope.goBack = function() {
       $ionicHistory.goBack();
+   };
+   
+   $scope.share = function(){
+         $cordovaSocialSharing.share($scope.purchaseProduct.short_title + ' ' +$scope.purchaseProduct.title, $scope.purchaseProduct.short_title,
+                                     $scope.getImage($scope.purchaseProduct.image), 
+                                     $scope.purchaseProduct.product_url);
    };
 });

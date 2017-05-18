@@ -21,7 +21,7 @@
                   {{product.location_text}} ({{product.distance | number:2}} ק"מ)
                 </div>
                 <div class="row">
-                  <button class="button button-positive purchase-button" ng-click="openWebBrowser(product.product_url);">לרכישה</button>
+                  <button class="button button-positive purchase-button" ng-click="purchaseProduct($index);">לרכישה</button>
                 </div>
           </div>
     </ion-content>
